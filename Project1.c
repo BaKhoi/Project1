@@ -82,7 +82,7 @@ int main(){
 
     //open weather
     int width3, height3, channel3;
-    char path_img3[] = "F:/Intro to C/Project1/weather.jpg";
+    char path_img3[] = "F:/Intro to C/Project1/images/weather.jpg";
 
     unsigned char *image3 = stbi_load(path_img3, &width3, &height3, &channel3, 0);
     if (image3 == NULL)
