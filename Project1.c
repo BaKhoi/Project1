@@ -30,24 +30,7 @@ unsigned char filter(unsigned char *background, unsigned char *foreground, unsig
 
             for (int k = 0; k < channel; k++)
             {
-               /**if (foreground[i*width*channel+j*channel+k] == background[i*width*channel+j*channel+k]){
-                * foreground[i*width*channel+j*channel+k] = weather[i*width*channel+j*channel+k];}
-                * 
-                * The above is incorrect because let say foreground has the rgb of 10,20,30(not green)
-                * but the background's rgb is 10,100,200 and weather forecast is 40,90,10
-                * then the substitution would result in foreground having rgb of 40,20,30 
-                * which is not the rgb of the desirable weather forecast
-                * Moreover, some of the greens in foreground is not identical to the background(light, transparency, etc), so 
-                * we must find the range of the rgb combination for the pixel to be "greenish"=>theshold
-                */
-            
-
-
-
-                // if (foreground[i*width*channel+j*channel+k] != background[i*width*channel+j*channel+k]){
-                //     a = 0;
-                    
-                // } 
+           
                 //Find the difference between the R,G,B of foreground and background
                 //Threshold
                 diff += abs(foreground[i*width*channel+j*channel+k] - background[i*width*channel+j*channel+k]);
@@ -71,30 +54,8 @@ unsigned char filter(unsigned char *background, unsigned char *foreground, unsig
 
 
 int main(){
-    //Open files
 
-    // FILE *back = fopen(argv[1], "r");
-    // if (back == NULL)
-    // {
-    //     printf("Could not open file.\n");
-    //     return 1;
-    // }
-    
-    // FILE *fore = fopen(argv[2], "r");
-    // if (fore == NULL)
-    // {
-    //     printf("Could not open file.\n");
-    //     return 1;
-    // }
-
-    // FILE *weather = fopen(argv[3], "r");
-    // if (weather == NULL)
-    // {
-    //     printf("Could not open file.\n");
-    //     return 1;
-    // }
-
-    //Open back ground
+    //Open background
     int width, height, channel;
     char path_img[] = "F:/Intro to C/Project1/images/background.png";
 
@@ -133,20 +94,11 @@ int main(){
 
     //filter
     filter(image,image2,image3,width,height,channel);
+    
+    //save new image
     char save_path[] = "F:/Intro to C/Project1/new.png";
     stbi_write_png(save_path,width2,height2,channel2,image2,width2*channel2);
 
-    // for (int i = 0; i < 400; i++)
-    // {
-    //     for (int j = 0; j < 400; j++)
-    //     {
-    //         for (int k = 0; k < 3; k++)
-    //         {
-    //             //Find the green rgb to replace with weather forecast
-    //             printf("%d\n",image2[i*width*channel+j*channel+k]);
-    //             }
-    //         }
-    //     }
   
 
 }
